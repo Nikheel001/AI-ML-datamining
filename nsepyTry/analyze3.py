@@ -1,15 +1,10 @@
-from pandas import read_csv
+# plotting histogram of High
+
 from matplotlib import pyplot
 import pandas
 import seaborn as sns
 import numpy
-
-stock_data = {'infy':'infy2021.csv', 'tcs':'tcs2021.csv',
-'persistent':'persistent2021.csv', 'ofss':'OFSS2021.csv'}
-
-def load_data(csvFileNames):
-    for i in csvFileNames:
-        yield read_csv(i), i
+from common import stock_data, load_data
 
 def plot_histogram(stockData):
     pyplot.xlabel('2021')

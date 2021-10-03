@@ -1,11 +1,7 @@
-from pandas import read_csv
+#basic date vs High graph
+
 from matplotlib import pyplot
-
-stock_data = {'infy':'infy2021.csv', 'tcs':'tcs2021.csv', 'persistent':'persistent2021.csv', 'ofss':'OFSS2021.csv'}
-
-def load_data(csvFileNames):
-    for i in csvFileNames:
-        yield read_csv(i), i
+from common import stock_data, load_data
 
 def plot_it(stockData):
     pyplot.xlabel('Date')

@@ -1,15 +1,10 @@
 # Cumulative Distribution Function
 
 from matplotlib.figure import Figure
-from pandas import read_csv
 from matplotlib import pyplot
 from math import ceil, floor
-# import pandas
-# import seaborn as sns
+from common import stock_data, load_data
 import numpy
-
-stock_data = {'infy':'infy2021.csv', 'tcs':'tcs2021.csv',
-'persistent':'persistent2021.csv', 'ofss':'OFSS2021.csv'}
 
 def getPlotPlacement(count, fig: Figure):
     tmp = count**0.5
@@ -20,13 +15,9 @@ def getPlotPlacement(count, fig: Figure):
         for j in range(c):
             yield ax[i,j]
 
-def load_data(csvFileNames):
-    for i in csvFileNames:
-        yield read_csv(i), i
-
 def cdf_histogram(stockData):
     pyplot.xlabel('High')
-    pyplot.ylabel('price')
+    pyplot.ylabel('frequency')
     n_stocks = len(stockData)
     fig = pyplot.figure(1)
     placement = getPlotPlacement(n_stocks, fig)
@@ -40,12 +31,12 @@ def cdf_histogram(stockData):
         place.legend()
     pyplot.show()
 
-def cdf_histogram(stockData):
-    pyplot.xlabel('High')
-    pyplot.ylabel('price')
+def cdf_histogram2(stockData):
     j = iter(range(len(stockData)))
     for i,label in load_data(stockData.values()):
         pyplot.figure(next(j)+1)
+        pyplot.xlabel('High')
+        pyplot.ylabel('frequency')
         counts,weights = numpy.histogram(i['High'], bins=10, density=True)
         pdf = counts/sum(counts)
         cdf = numpy.cumsum(pdf)
