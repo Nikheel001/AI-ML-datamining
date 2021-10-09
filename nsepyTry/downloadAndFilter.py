@@ -2,10 +2,10 @@ from datetime import date
 from nsepy import get_history
 from pandas import read_csv
 
-sym='OFSS'
+sym='M&MFIN'
 
 def download_data(symbol):
-    df = get_history(symbol=symbol, start=date(2015,1,1), end=date(2021,9,17))
+    df = get_history(symbol=symbol, start=date(2008,1,1), end=date(2021,10,5))
     # export
     if len(df)>0:
         df.to_csv(symbol+'.csv')
@@ -26,5 +26,5 @@ def load_and_filter(symbol):
     # [print(type(i)) for i in df['YY'].head()]
     df2021.to_csv(symbol+'2021.csv', index=False)
 
-# download_data(sym)
-load_and_filter(sym)
+download_data(sym)
+# load_and_filter(sym)
