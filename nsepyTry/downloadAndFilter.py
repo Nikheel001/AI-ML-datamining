@@ -2,10 +2,10 @@ from datetime import date
 from nsepy import get_history
 from pandas import read_csv
 
-sym='M&MFIN'
+sym='INFY'
 
 def download_data(symbol):
-    df = get_history(symbol=symbol, start=date(2008,1,1), end=date(2021,10,5))
+    df = get_history(symbol=symbol, start=date(2021,10,1), end=date(2021,10,25))
     # export
     if len(df)>0:
         df.to_csv(symbol+'.csv')
